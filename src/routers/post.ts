@@ -3,12 +3,13 @@ import {Note} from '../models/note';
 
 export const postRouter = express.Router();
 
-postRouter.post('/notes', (req, res) => {
+postRouter.post('/notes', async (req, res) => {
   const note = new Note(req.body);
 
-  note.save().then((note) => {
+  try  {
+    await note.save();
     res.status(201).send(note);
-  }).catch((error) => {
+  } catch (error) {
     res.status(400).send(error);
-  });
+  }
 });
