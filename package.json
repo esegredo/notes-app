@@ -4,8 +4,12 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "heroku-postbuild": "tsc",
     "start": "node dist/index.js",
     "dev": "tsc-watch --onSuccess \"node dist/index.js\""
+  },
+  "engines": {
+    "node": "16.x"
   },
   "keywords": [],
   "author": "",
