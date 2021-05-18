@@ -6,7 +6,7 @@ export const postRouter = express.Router();
 postRouter.post('/notes', async (req, res) => {
   const note = new Note(req.body);
 
-  try  {
+  try {
     await note.save();
     res.status(201).send(note);
   } catch (error) {

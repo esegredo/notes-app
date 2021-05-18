@@ -11,7 +11,8 @@ deleteRouter.delete('/notes', async (req, res) => {
   }
 
   try {
-    const note = await Note.findOneAndDelete({title: req.query.title.toString()});
+    const note =
+      await Note.findOneAndDelete({title: req.query.title.toString()});
 
     if (!note) {
       return res.status(404).send();

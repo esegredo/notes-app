@@ -12,7 +12,7 @@ getRouter.get('/notes', async (req, res) => {
     if (notes.length !== 0) {
       return res.send(notes);
     }
-     
+
     return res.status(404).send();
   } catch (error) {
     return res.status(500).send();
@@ -26,9 +26,9 @@ getRouter.get('/notes/:id', async (req, res) => {
     if (!note) {
       return res.status(404).send();
     }
-    
+
     return res.send(note);
-  } catch(error) {
+  } catch (error) {
     return res.status(500).send();
   }
 });

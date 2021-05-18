@@ -1,8 +1,8 @@
 import {connect} from 'mongoose';
 
-const mongodb_url = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/notes-app';
+const databaseURL = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/notes-app';
 
-connect(mongodb_url, {
+connect(databaseURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

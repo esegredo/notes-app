@@ -8,8 +8,8 @@ patchRouter.patch('/notes', async (req, res) => {
     return res.status(400).send({
       error: 'A title must be provided',
     });
-  } 
-  
+  }
+
   const allowedUpdates = ['title', 'body', 'color'];
   const actualUpdates = Object.keys(req.body);
   const isValidUpdate =
@@ -22,18 +22,19 @@ patchRouter.patch('/notes', async (req, res) => {
   }
 
   try {
-    const note = await Note.findOneAndUpdate({title: req.query.title.toString()}, req.body, {
+    const note =
+    await Note.findOneAndUpdate({title: req.query.title.toString()}, req.body, {
       new: true,
       runValidators: true,
     });
 
     if (!note) {
-       return res.status(404).send();
+      return res.status(404).send();
     }
 
     return res.send(note);
   } catch (error) {
-    return res.status(400).send(error)
+    return res.status(400).send(error);
   }
 });
 
@@ -52,15 +53,15 @@ patchRouter.patch('/notes/:id', async (req, res) => {
   try {
     const note = await Note.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-      runValidators: true
+      runValidators: true,
     });
 
     if (!note) {
-      return res.status(404).send()
+      return res.status(404).send();
     }
-    
+
     return res.send(note);
-  } catch(error) {
+  } catch (error) {
     return res.status(400).send(error);
   }
 });
